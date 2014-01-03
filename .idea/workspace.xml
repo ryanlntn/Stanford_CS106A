@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d162e881-a29d-4cea-8fb2-2d55fe074be7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stanford_CS106A.iml" afterPath="$PROJECT_DIR$/Stanford_CS106A.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Stanford_CS106A.iws" />
@@ -361,6 +358,11 @@
       <created>1388729151456</created>
       <updated>1388729151456</updated>
     </task>
+    <task id="LOCAL-00001" summary="Get Karel Working">
+      <created>1388731748370</created>
+      <updated>1388731748370</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -404,6 +406,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Get Karel Working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get Karel Working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
