@@ -14,9 +14,11 @@ public class CheckerboardKarel extends SuperKarel {
     public void run() {
         for (int i = 0; i < 8; i++) {
             if (i % 2 == 0) {
+                paintCorner(RED);
                 putBeeper();
                 move();
             } else {
+                paintCorner(BLACK   );
                 move();
             }
         }
