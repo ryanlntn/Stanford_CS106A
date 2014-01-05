@@ -11,6 +11,7 @@ import stanford.karel.*;
 public class OurKarel extends Karel {
     public void run() {
         move();
+        turnLeft();
         move();
         move();
     }
