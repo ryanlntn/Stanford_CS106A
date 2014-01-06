@@ -1,17 +1,58 @@
 /*
  * File: StoneMasonKarel.java
  * --------------------------
- * The StoneMasonKarel subclass as it appears here does nothing.
- * When you finish writing it, it should solve the "repair the quad"
- * problem from Assignment 1.  In addition to editing the program,
- * you should be sure to edit this comment so that it no longer
- * indicates that the program does nothing.
+ * The StoneMasonKarel subclass repairs quad columns starting
+ * with the 0th column and continuing every 4 streets.
  */
 
 import stanford.karel.*;
 
 public class StoneMasonKarel extends SuperKarel {
 
-	// You fill in this part
+	public void run() {
+        repairColumn();
+        while (frontIsClear()) {
+            for (int i = 0; i < 4; i++) {
+                move();
+            }
+            repairColumn();
+        }
+    }
 
+    /*
+     * Starting at the base of the column facing east move upwards
+     * checking for beepers each step of the way until the ceiling
+     * is reached. Return to base of column.
+     */
+    private void repairColumn() {
+        turnLeft();
+        while (frontIsClear()) {
+            putBeeperIfMissing();
+            move();
+        }
+        putBeeperIfMissing();
+        returnToBase();
+    }
+
+    /*
+     * If beeper is missing putBeeper. Does nothing otherwise.
+     */
+    private void putBeeperIfMissing() {
+        if (noBeepersPresent()) {
+            putBeeper();
+        }
+    }
+
+    /*
+     * Return to base of column from ceiling and face east.
+     */
+    private void returnToBase() {
+        turnAround();
+        while (frontIsClear()) {
+            move();
+        }
+        turnLeft();
+    }
 }
+
+
