@@ -15,8 +15,16 @@ import stanford.karel.*;
 public class MidpointFindingKarel extends SuperKarel {
 
 	public void run() {
-        fillRowWithBeepers();
-        pickEndBeepers();
+        if (frontIsClear()) {
+            fillRowWithBeepers();
+            pickEndBeepers();
+        } else {
+            /*
+             * If front is blocked we are in a 1 corner wide world so we can just
+             * place a beeper. Easy.
+             */
+            putBeeper();
+        }
     }
 
     /*
