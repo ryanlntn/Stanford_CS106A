@@ -13,11 +13,17 @@ public class CheckerboardKarel extends SuperKarel {
 
     public void run() {
         if (frontIsClear()) {
+            /*
+             * Checker rows back and forth from the bottom up.
+             */
             while (frontIsClear()) {
                 checkerRow();
                 moveUpAndOffset();
             }
         } else {
+            /*
+             * Account for edge case where world is only 1 corner wide.
+             */
             turnLeft();
             while (frontIsClear()) {
                 checkerRow();
@@ -26,6 +32,10 @@ public class CheckerboardKarel extends SuperKarel {
         }
     }
 
+    /*
+     * Starting at one end of a row (or offset by one) place beepers on
+     * every other corner until reaching the other end of the row.
+     */
     private void checkerRow() {
         putBeeper();
         while (frontIsClear()) {
@@ -37,6 +47,10 @@ public class CheckerboardKarel extends SuperKarel {
         }
     }
 
+    /*
+     * If a beeper is present at the end of the current row move up row
+     * and offset by one. Otherwise just move up one row.
+     */
     private void moveUpAndOffset() {
         if (beepersPresent()) {
             moveUpRow();
@@ -48,6 +62,10 @@ public class CheckerboardKarel extends SuperKarel {
         }
     }
 
+    /*
+     * Pre-condition: Front is blocked facing east or west (i.e. reach the end of the row)
+     * Post-condition: Karel will be one corner north facing the opposite direction.
+     */
     private void moveUpRow() {
         if (facingWest() && rightIsClear()) {
             turnRight();
