@@ -14,33 +14,41 @@ public class CheckerboardKarel extends SuperKarel {
     public void run() {
         while (frontIsClear()) {
             checkerRow();
-            if (leftIsClear() || rightIsClear()) {
+            if (leftIsClear()) {
                 moveUpRow();
             }
         }
+        moveUpRow();
+        run();
     }
 
     private void checkerRow() {
+        putBeeper();
         while (frontIsClear()) {
-            putBeeper();
             move();
             if (frontIsClear()) {
                 move();
+                putBeeper();
             }
         }
     }
 
     private void moveUpRow() {
-        if (facingEast() && leftIsClear()) {
-            turnLeft();
+        turnAround();
+        while (frontIsClear()) {
             move();
-            turnLeft();
-        } else {
-            if (facingWest() && rightIsClear()) {
-                turnRight();
+        }
+        if (beepersPresent()) {
+            turnRight();
+            move();
+            turnRight();
+            if (frontIsClear()) {
                 move();
-                turnRight();
             }
+        } else {
+            turnRight();
+            move();
+            turnRight();
         }
     }
 
