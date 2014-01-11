@@ -1,5 +1,4 @@
-package Assignment2;/*
-
+/*
  * File: FindRange.java
  * Name: 
  * Section Leader: 
