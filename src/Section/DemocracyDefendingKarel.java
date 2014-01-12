@@ -22,19 +22,18 @@ public class DemocracyDefendingKarel extends SuperKarel {
 
     private void removeChad() {
         turnLeft();
-        move();
-        while(beepersPresent()) {
-            pickBeeper();
-        }
-        turnAround();
-        move();
-        move();
-        while(beepersPresent()) {
-            pickBeeper();
-        }
-        turnAround();
-        move();
+        clearBeepersAndAboutFace();
+        clearBeepersAndAboutFace();
         turnRight();
+    }
+
+    private void clearBeepersAndAboutFace() {
+        move();
+        while(beepersPresent()) {
+            pickBeeper();
+        }
+        turnAround();
+        move();
     }
 
 }
