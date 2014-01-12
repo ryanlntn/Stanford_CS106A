@@ -10,6 +10,31 @@ import stanford.karel.*;
 public class DemocracyDefendingKarel extends SuperKarel {
 
     public void run() {
+        while(frontIsClear()) {
+            if(beepersPresent()) {
+                move();
+            } else {
+                removeChad();
+                move();
+            }
+        }
+    }
+
+    private void removeChad() {
+        turnLeft();
+        move();
+        while(beepersPresent()) {
+            pickBeeper();
+        }
+        turnAround();
+        move();
+        move();
+        while(beepersPresent()) {
+            pickBeeper();
+        }
+        turnAround();
+        move();
+        turnRight();
     }
 
 }
