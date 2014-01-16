@@ -8,6 +8,7 @@
 import acm.program.*;
 
 public class TriangleAreaCalc extends ConsoleProgram {
+
     public void run() {
         println("This program calculates the area of a triangle.");
         double b = readDouble("Enter base: ");
@@ -15,4 +16,5 @@ public class TriangleAreaCalc extends ConsoleProgram {
         double a = (b * h) / 2;
         println("Triangle's area = " + a);
     }
+
 }

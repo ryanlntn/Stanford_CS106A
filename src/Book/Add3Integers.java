@@ -7,6 +7,7 @@
 import acm.program.*;
 
 public class Add3Integers extends ConsoleProgram {
+
     public void run() {
         println("This program adds three integers.");
         int n1 = readInt("Enter n1: ");
@@ -15,4 +16,5 @@ public class Add3Integers extends ConsoleProgram {
         int total = n1 + n2 + n3;
         println("The total is " + total + ".");
     }
+
 }

@@ -11,8 +11,10 @@ import acm.graphics.*;
 import acm.program.*;
 
 public class HelloProgram extends GraphicsProgram {
-   public void run() {
+
+    public void run() {
       add(new GLabel("I love Java!"), 100, 75);
       add(new GLabel("- Ryan Linton"), 600, 400);
-   }
+    }
+
 }

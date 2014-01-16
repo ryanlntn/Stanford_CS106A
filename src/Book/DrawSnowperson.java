@@ -13,6 +13,7 @@ import acm.graphics.*;
 import acm.program.*;
 
 public class DrawSnowperson extends GraphicsProgram {
+
     public void run() {
         drawBody();
         drawButtons();
@@ -40,4 +41,5 @@ public class DrawSnowperson extends GraphicsProgram {
             y += 20;
         }
     }
+
 }
