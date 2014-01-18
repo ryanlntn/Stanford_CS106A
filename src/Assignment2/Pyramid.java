@@ -3,11 +3,10 @@
  * Name: Ryan Linton
  * Section Leader: N/A
  * ------------------
- * This file is the starter file for the Pyramid problem.
- * It includes definitions of the constants that match the
- * sample run in the assignment, but you should make sure
- * that changing these values causes the generated display
- * to change accordingly.
+ * This program draws a pyramid of bricks (GRect objects)
+ * to the screen. Brick width, height, and the number of
+ * bricks in the base may be adjusted. The pyramid will
+ * appear centered at the bottom of the screen.
  */
 
 import acm.graphics.*;
@@ -26,15 +25,26 @@ public class Pyramid extends GraphicsProgram {
 	private static final int BRICKS_IN_BASE = 14;
 	
 	public void run() {
+
+        // Get initial x and y values for the first brick
         int x = (getWidth() - (BRICKS_IN_BASE * BRICK_WIDTH)) / 2;
         int y = getHeight() - BRICK_HEIGHT;
+
+        // Set number of bricks in row so we can decrement later
         int bricksInRow = BRICKS_IN_BASE;
+
         while (bricksInRow > 0) {
+
+            // Lay row of bricks
             for (int brick = 0; brick < bricksInRow; brick++) {
                 add(new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT));
                 x += BRICK_WIDTH;
             }
+
+            // Decrement number of bricks in row
             bricksInRow--;
+
+            // Adjust x and y to center next row of bricks
             x = (getWidth() - (bricksInRow * BRICK_WIDTH)) / 2;
             y -= BRICK_HEIGHT;
         }
