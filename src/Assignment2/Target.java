@@ -14,8 +14,8 @@ public class Target extends GraphicsProgram {
 
     // Circle diameters in pixels
     private static final int OUTER_SIZE = 72;
-    private static final int WHITE_SIZE = (int) (72 * 0.65);
-    private static final int INNER_SIZE = (int) (72 * 0.3);
+    private static final int WHITE_SIZE = (int) (OUTER_SIZE * 0.65);
+    private static final int INNER_SIZE = (int) (OUTER_SIZE * 0.3);
 
     public void run() {
 		GOval outer = new GOval((getWidth() - OUTER_SIZE) / 2, (getHeight() - OUTER_SIZE) / 2, OUTER_SIZE, OUTER_SIZE);
