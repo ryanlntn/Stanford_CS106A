@@ -1,15 +1,21 @@
 /*
  * File: PythagoreanTheorem.java
- * Name: 
- * Section Leader: 
+ * Name: Ryan Linton
+ * Section Leader: N/A
  * -----------------------------
- * This file is the starter file for the PythagoreanTheorem problem.
+ * This program computes the Pythagorean theorem.
  */
 
 import acm.program.*;
 
 public class PythagoreanTheorem extends ConsoleProgram {
+
 	public void run() {
-		/* You fill this in */
+        println("Enter values to compute Pythagorean theorem.");
+		double a = readDouble("a: ");
+        double b = readDouble("b: ");
+        double c = Math.sqrt((a * a) + (b * b));
+        println("c = " + c);
 	}
+
 }
