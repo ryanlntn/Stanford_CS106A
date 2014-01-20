@@ -16,7 +16,14 @@ public class ProgramHierarchy extends GraphicsProgram {
     private static final int BOX_HEIGHT = 40;
 
 	public void run() {
-		drawClassBox(0, 0, "Program");
+        // Chart origin
+        int x = (getWidth() - (BOX_WIDTH * 3 + 40)) / 2;
+        int y = (getHeight() - BOX_HEIGHT * 3) / 2;
+        
+		drawClassBox(x + BOX_WIDTH + 20, y, "Program");
+        drawClassBox(x, y + BOX_HEIGHT * 2, "GraphicsProgram");
+        drawClassBox(x + BOX_WIDTH + 20, y + BOX_HEIGHT * 2, "ConsoleProgram");
+        drawClassBox(x + (BOX_WIDTH + 20) * 2, y + BOX_HEIGHT * 2, "DialogProgram");
 	}
 
     // Draws a box with a centered label
