@@ -19,11 +19,15 @@ public class ProgramHierarchy extends GraphicsProgram {
         // Chart origin
         int x = (getWidth() - (BOX_WIDTH * 3 + 40)) / 2;
         int y = (getHeight() - BOX_HEIGHT * 3) / 2;
-        
+
 		drawClassBox(x + BOX_WIDTH + 20, y, "Program");
         drawClassBox(x, y + BOX_HEIGHT * 2, "GraphicsProgram");
         drawClassBox(x + BOX_WIDTH + 20, y + BOX_HEIGHT * 2, "ConsoleProgram");
         drawClassBox(x + (BOX_WIDTH + 20) * 2, y + BOX_HEIGHT * 2, "DialogProgram");
+
+        add(new GLine(x + (BOX_WIDTH * 3 + 40) / 2, y + BOX_HEIGHT, x + BOX_WIDTH / 2, y + BOX_HEIGHT * 2));
+        add(new GLine(x + (BOX_WIDTH * 3 + 40) / 2, y + BOX_HEIGHT, x + (BOX_WIDTH * 3 + 40) / 2, y + BOX_HEIGHT * 2));
+        add(new GLine(x + (BOX_WIDTH * 3 + 40) / 2, y + BOX_HEIGHT, x + (BOX_WIDTH * 3 + 40) - (BOX_WIDTH / 2), y + BOX_HEIGHT * 2));
 	}
 
     // Draws a box with a centered label
