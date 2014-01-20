@@ -9,7 +9,7 @@
 import acm.program.*;
 
 public class Hailstone extends ConsoleProgram {
-    
+
 	public void run() {
 		/*
 		 * Pick some positive integer and call it n.
