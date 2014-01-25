@@ -23,8 +23,8 @@ import acm.program.*;
 public class ThisOldMan extends ConsoleProgram {
 
     public void run() {
+        String word = "";
         for (int i = 1; i <= 10; i++) {
-            String word = "";
             switch (i) {
                 case 1: word = "thumb"; break;
                 case 2: word = "shoe"; break;
