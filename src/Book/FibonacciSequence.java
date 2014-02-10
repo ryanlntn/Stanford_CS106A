@@ -1,5 +1,5 @@
 /*
- * File: Fibonacci.java
+ * File: FibonacciSequence.java
  * --------------------
  * This program displays the values in the Fibonacci sequence.
  */
