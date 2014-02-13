@@ -1,12 +1,12 @@
 /*
- * File: raiseIntToPower.java
+ * File: RaiseIntToPower.java
  * --------------------
  * This program displays the nth value in the Fibonacci sequence.
  */
 
 import acm.program.*;
 
-public class raiseIntToPower extends ConsoleProgram {
+public class RaiseIntToPower extends ConsoleProgram {
 
     public void run() {
 
@@ -20,13 +20,13 @@ public class raiseIntToPower extends ConsoleProgram {
 
     private int raiseIntToPower(int n, int k) {
 
-        int product = 1;
+        int power = 1;
 
         for (int i = 0; i < k; i++) {
-            product *= n;
+            power *= n;
         }
 
-        return product;
+        return power;
 
     }
 
