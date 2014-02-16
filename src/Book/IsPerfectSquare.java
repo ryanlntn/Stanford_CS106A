@@ -25,7 +25,7 @@ public class IsPerfectSquare extends ConsoleProgram {
         int root = (int) Math.sqrt(n);
 
         return (root * root) == n;
-        
+
     }
 
 }
