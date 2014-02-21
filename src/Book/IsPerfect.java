@@ -1,7 +1,7 @@
 /*
  * File: IsPerfect.java
  * --------------------
- * This program prints if the given integer is perfect.
+ * This program lists the prefect numbers from in 1 to 9999.
  */
 
 import acm.program.*;
