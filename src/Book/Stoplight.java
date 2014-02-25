@@ -23,7 +23,7 @@ public class Stoplight {
      * Creates a new Stoplight object, which is initially GREEN.
      */
     public Stoplight() {
-        state = GREEN;
+        state = 0;
     }
 
     /**
@@ -31,23 +31,21 @@ public class Stoplight {
      * @return The state of the stoplight (GREEN, YELLOW, or RED)
      */
     public Color getState() {
-        return state;
+        switch (state) {
+            case 0:  return GREEN;
+            case 1:  return YELLOW;
+            case 2:  return RED;
+            default: return null;  /* Can't occur but required by Java */
+        }
     }
 
     /**
      * Advances the stoplight to the next state.
      */
     public void advance() {
-        if (state == RED) {
-            state = GREEN;
-        } else if (state == YELLOW) {
-            state = RED;
-        } else if (state == GREEN) {
-            state = YELLOW;
-        }
+        state = (state + 1) % 3;
     }
 
     /* Private instance variable */
-    private Color state;
-
+    private int state;
 }
