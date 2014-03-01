@@ -14,7 +14,7 @@ public class CoinFlip extends ConsoleProgram {
 
         while (consecutiveHeads < 5) {
 
-            String flip = flipCoin();
+            String flip = rand.nextBoolean() ? "Heads" : "Tails";
             println(flip);
 
             if (flip == "Heads") {
@@ -29,14 +29,6 @@ public class CoinFlip extends ConsoleProgram {
 
         println("It took " + totalFlips + " flips to get " + consecutiveHeads + " consecutive heads.");
 
-    }
-
-    private String flipCoin() {
-        if (rand.nextBoolean()) {
-            return "Heads";
-        } else {
-            return "Tails";
-        }
     }
 
     /* Create an instance variable for the random number generator */
