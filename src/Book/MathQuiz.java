@@ -28,10 +28,8 @@ public class MathQuiz extends ConsoleProgram {
                     println("No, the answer is " + (x + y) + ".");
                     return;
                 }
-                println("That's incorrect - try a different answer: ");
-                ans = readInt("What is " + x + " + " + y + "? ");
+                ans = readInt("That's incorrect - try a different answer: ");
             }
-            println("That's the answer!");
         } else {
             int ans = readInt("What is " + x + " - " + y + "? ");
             while (ans != x - y) {
@@ -40,11 +38,10 @@ public class MathQuiz extends ConsoleProgram {
                     println("No, the answer is " + (x - y) + ".");
                     return;
                 }
-                println("That's incorrect - try a different answer: ");
-                ans = readInt("What is " + x + " - " + y + "? ");
+                ans = readInt("That's incorrect - try a different answer: ");
             }
-            println("That's the answer!");
         }
+        println("That's the answer!");
     }
 
     private RandomGenerator rand = new RandomGenerator();
