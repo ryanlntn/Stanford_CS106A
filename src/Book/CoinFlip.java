@@ -32,8 +32,7 @@ public class CoinFlip extends ConsoleProgram {
     }
 
     private String flipCoin() {
-        int random = rand.nextInt(0, 1);
-        if (random == 0) {
+        if (rand.nextBoolean()) {
             return "Heads";
         } else {
             return "Tails";
