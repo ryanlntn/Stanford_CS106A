@@ -10,6 +10,7 @@ public class MathQuiz extends ConsoleProgram {
     private static final int MAX_ATTEMPTS = 3;
 
     public void run() {
+        println("Welcome to Math Quiz");
         for (int i = 0; i < TOTAL_QUESTIONS; i++) {
             askQuestion();
         }
@@ -41,7 +42,31 @@ public class MathQuiz extends ConsoleProgram {
                 ans = readInt("That's incorrect - try a different answer: ");
             }
         }
-        println("That's the answer!");
+        giveKudos();
+    }
+
+    private void giveKudos() {
+        int kudo = rand.nextInt(1, 6);
+        switch (kudo) {
+            case 1:
+                println("That's the answer!");
+                break;
+            case 2:
+                println("Correct!");
+                break;
+            case 3:
+                println("Super!");
+                break;
+            case 4:
+                println("Damn you're smart!");
+                break;
+            case 5:
+                println("You got it!");
+                break;
+            default:
+                println("Genius!");
+                break;
+        }
     }
 
     private RandomGenerator rand = new RandomGenerator();
