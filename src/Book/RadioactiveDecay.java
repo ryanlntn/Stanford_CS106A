@@ -6,11 +6,11 @@ import acm.util.*;
  */
 public class RadioactiveDecay extends ConsoleProgram {
 
-    private static final int initialAtoms = 10000;
+    private static final int INITIAL_ATOMS= 10000;
 
     public void run() {
-        println("There are " + initialAtoms + " atoms initially");
-        int atoms = initialAtoms;
+        println("There are " + INITIAL_ATOMS + " atoms initially");
+        int atoms = INITIAL_ATOMS;
         int year = 0;
         while (atoms > 0) {
             atoms *= rand.nextDouble(0.45, 0.55);
