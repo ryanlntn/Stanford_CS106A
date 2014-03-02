@@ -35,6 +35,10 @@ public class Card extends ConsoleProgram {
         return this.rank;
     }
 
+    public String toString() {
+        return this.rank + " of " + this.suit;
+    }
+
     private int suit;
     private int rank;
 
