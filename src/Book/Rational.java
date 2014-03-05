@@ -1,4 +1,7 @@
 import acm.util.*;
+
+import java.math.BigInteger;
+
 /**
  * The Rational class is used to represent rational numbers, which
  * are defined to be the quotient of two integers.
@@ -14,7 +17,7 @@ public class Rational {
      * Creates a new Rational from the integer argument.
      * @param n The initial value
      */
-    public Rational(int n) {
+    public Rational(BigInteger n) {
         this(n, 1);
     }
     /**
@@ -22,9 +25,9 @@ public class Rational {
      * @param x The numerator of the rational number
      * @param y The denominator of the rational number
      */
-    public Rational(int x, int y) {
+    public Rational(BigInteger x, BigInteger y) {
         if (y == 0) throw new ErrorException("Division by 0");
-        int g = gcd(Math.abs(x), Math.abs(y));
+        BigInteger g = gcd(Math.abs(x), Math.abs(y));
         num = x / g;
         den = Math.abs(y) / g;
         if (y < 0) num = -num;
@@ -80,8 +83,8 @@ public class Rational {
      * @param y Second integer
      * @return The greatest common divisor of x and y
      */
-    private int gcd(int x, int y) {
-        int r = x % y;
+    private BigInteger gcd(BigInteger x, BigInteger y) {
+        BigInteger r = x % y;
         while (r != 0) {
             x = y;
             y = r;
@@ -89,6 +92,6 @@ public class Rational {
         }
         return y; }
     /* Private instance variables */
-    private int num;   /* The numerator of this Rational   */
-    private int den;   /* The denominator of this Rational */
+    private BigInteger num;   /* The numerator of this Rational   */
+    private BigInteger den;   /* The denominator of this Rational */
 }
