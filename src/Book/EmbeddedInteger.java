@@ -42,4 +42,4 @@ public class EmbeddedInteger {
     /* Private instance variable */
     private int value;      /* The internal value */
 
-} 
+}
