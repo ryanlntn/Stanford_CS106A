@@ -11,7 +11,7 @@ public class HexToDecimalConverter extends ConsoleProgram {
         while (true) {
             String hex = readLine("Enter a hexadecimal number: ");
             if (hex == "0") break;
-            println(hex + " hex = " + Integer.parseInt(hex, 16) + " decimal");
+            println(hex + " hex = " + Integer.toString(Integer.parseInt(hex, 16)) + " decimal");
         }
     }
 
