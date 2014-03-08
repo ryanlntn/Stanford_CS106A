@@ -10,8 +10,8 @@ public class HexToDecimalConverter extends ConsoleProgram {
         println("Enter 0 to stop.");
         while (true) {
             String hex = readLine("Enter a hexadecimal number: ");
-            if (hex == "0") break;
-            println(hex + " hex = " + Integer.toString(Integer.parseInt(hex, 16)) + " decimal");
+            if (Integer.parseInt(hex, 16) == 0) break;
+            println(hex + " hex = " + Integer.parseInt(hex, 16) + " decimal");
         }
     }
 
