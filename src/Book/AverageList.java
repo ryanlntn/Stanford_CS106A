@@ -12,7 +12,7 @@ import acm.program.*;
 public class AverageList extends ConsoleProgram {
 
     /* Specifies the value of the sentinel */
-    private static final int SENTINEL = -1;
+    private static final String SENTINEL = "";
 
     /* Runs the program */
     public void run() {
@@ -24,9 +24,9 @@ public class AverageList extends ConsoleProgram {
         int n = 0;
 
         while (true) {
-            int value = readInt(" ? ");
+            String value = readLine(" ? ");
             if (value == SENTINEL) break;
-            total += value;
+            total += Integer.parseInt(value);
             n++;
         }
 
