@@ -19,7 +19,7 @@ public class GCTest extends ConsoleProgram {
 
         long freeMemory = myRuntime.freeMemory();
         myRuntime.gc();
-        long memoryfreed = freeMemory - myRuntime.freeMemory();
+        long memoryfreed = myRuntime.freeMemory() - freeMemory;
 
         println("Garbage collection freed " + memoryfreed + " bytes");
 
