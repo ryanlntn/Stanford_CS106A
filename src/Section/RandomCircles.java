@@ -1,7 +1,7 @@
 /*
- * File: BouncingBall.java
+ * File: RandomCircles.java
  * -----------------------
- * This program graphically simulates a bouncing ball.
+ * This program draws 10 random circles
  */
 
 import acm.program.*;
