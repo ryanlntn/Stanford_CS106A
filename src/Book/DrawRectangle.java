@@ -14,7 +14,7 @@ public class DrawRectangle extends GraphicsProgram {
 
     /** Runs the program */
     public void run() {
-        addMouseListeners();
+        //addMouseListeners();
     }
 
     /** Called on mouse press to record the starting coordinates */
