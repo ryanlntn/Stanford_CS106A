@@ -4,9 +4,9 @@
  * This program allows a user to draw lines to the canvas.
  */
 
-import java.awt.event.*;
 import acm.graphics.*;
 import acm.program.*;
+import java.awt.event.*;
 
 public class DrawLines extends GraphicsProgram {
 
@@ -16,15 +16,20 @@ public class DrawLines extends GraphicsProgram {
 
     /** Called on mouse press to record the coordinates of the click */
     public void mousePressed(MouseEvent e) {
-        line = new GLine(e.getX(), e.getY(), e.getX(), e.getY());
+        double x = e.getX();
+        double y = e.getY();
+        line = new GLine(x, y, x, y);
         add(line);
     }
 
     /** Called on mouse drag to reposition the object */
     public void mouseDragged(MouseEvent e) {
-        if (line != null) line.setEndPoint(e.getX(), e.getY());
+        double x = e.getX();
+        double y = e.getY();
+        line.setEndPoint(x, y);
     }
 
     private GLine line;
 
 }
+
