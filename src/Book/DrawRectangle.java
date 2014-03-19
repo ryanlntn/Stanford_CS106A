@@ -14,7 +14,7 @@ public class DrawRectangle extends GraphicsProgram {
 
     /** Runs the program */
     public void run() {
-        //addMouseListeners();
+        addMouseListeners();
     }
 
     /** Called on mouse press to record the starting coordinates */
@@ -36,8 +36,8 @@ public class DrawRectangle extends GraphicsProgram {
     }
 
     /* Private state */
-    private GRect currentRect; /* The current rectangle */
-    private double startX; /* The initial mouse X position  */
-    private double startY; /* The initial mouse Y position  */
+    private GRect currentRect; /* The current rectangle         */
+    private double startX;     /* The initial mouse X position  */
+    private double startY;     /* The initial mouse Y position  */
 
 }
