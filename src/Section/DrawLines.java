@@ -11,7 +11,9 @@ import java.awt.event.*;
 public class DrawLines extends GraphicsProgram {
 
     public void run() {
-        addMouseListeners();
+        GCanvas canvas = getGCanvas();
+        canvas.addMouseListener(this);
+//        addMouseListeners();
     }
 
     /** Called on mouse press to record the coordinates of the click */
