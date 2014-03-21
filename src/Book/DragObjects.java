@@ -16,7 +16,7 @@ public class DragObjects extends GraphicsProgram {
         oval.setFilled(true);
         oval.setColor(Color.GREEN);
         add(oval);
-//        addMouseListeners();
+        addMouseListeners();
     }
 
     /** Called on mouse press to record the coordinates of the click */
