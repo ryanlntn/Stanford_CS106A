@@ -58,10 +58,12 @@ public class Breakout extends GraphicsProgram {
     private static final int NTURNS = 3;
 
     private GRect paddle;
+    private GOval ball;
 
     public void run() {
         setupBricks();
         drawPaddle((WIDTH - PADDLE_WIDTH) / 2);
+        drawBall();
         addMouseListeners();
     }
 
@@ -104,6 +106,17 @@ public class Breakout extends GraphicsProgram {
         paddle.setFillColor(Color.BLACK);
         paddle.setColor(Color.BLACK);
         add(paddle);
+    }
+
+    private void drawBall() {
+        double d = BALL_RADIUS * 2;
+        double x = (WIDTH - d) / 2;
+        double y = (HEIGHT - d) / 2;
+        ball = new GOval(x, y, d, d);
+        ball.setFilled(true);
+        ball.setFillColor(Color.BLACK);
+        ball.setColor(Color.BLACK);
+        add(ball);
     }
 
     private Color rowColor(int n) {
