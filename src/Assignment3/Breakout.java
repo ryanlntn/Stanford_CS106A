@@ -59,12 +59,20 @@ public class Breakout extends GraphicsProgram {
 
     private GRect paddle;
     private GOval ball;
+    private double vx;
+    private double vy = 3.0;
 
     public void run() {
         setupBricks();
         drawPaddle((WIDTH - PADDLE_WIDTH) / 2);
         drawBall();
+        vx = rand.nextDouble(1.0, 3.0);
+        if (rand.nextBoolean(0.5)) vx = -vx;
         addMouseListeners();
+        while (true) {
+            moveBall();
+            pause(20);
+        }
     }
 
     public void mouseMoved(MouseEvent e) {
@@ -119,6 +127,10 @@ public class Breakout extends GraphicsProgram {
         add(ball);
     }
 
+    private void moveBall() {
+        ball.move(vx, vy);
+    }
+
     private Color rowColor(int n) {
         switch (n) {
             case 0: return Color.RED;
@@ -134,4 +146,7 @@ public class Breakout extends GraphicsProgram {
             default: return Color.BLACK;
         }
     }
+
+    private RandomGenerator rand = RandomGenerator.getInstance();
+
 }
