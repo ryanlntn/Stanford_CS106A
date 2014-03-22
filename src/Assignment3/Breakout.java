@@ -50,6 +50,10 @@ public class Breakout extends GraphicsProgram {
     /** Offset of the top brick row from the top */
     private static final int BRICK_Y_OFFSET = 70;
 
+    /** Offset of the top brick row from the left */
+    private static final int BRICK_X_OFFSET =
+            (WIDTH - (NBRICKS_PER_ROW * (BRICK_WIDTH + BRICK_SEP)) + BRICK_SEP) / 2;
+
     /** Number of turns */
     private static final int NTURNS = 3;
 
@@ -66,7 +70,7 @@ public class Breakout extends GraphicsProgram {
     }
 
     private void draw_row(double y, Color color) {
-        double x = BRICK_SEP / 2;
+        double x = BRICK_X_OFFSET;
         for (int i = 0; i < NBRICKS_PER_ROW; i++) {
             draw_brick(x, y, color);
             x += BRICK_WIDTH + BRICK_SEP;
