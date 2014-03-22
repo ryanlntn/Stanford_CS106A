@@ -57,35 +57,53 @@ public class Breakout extends GraphicsProgram {
     /** Number of turns */
     private static final int NTURNS = 3;
 
+    private GRect paddle;
+
     public void run() {
-        setup_bricks();
+        setupBricks();
+        drawPaddle((WIDTH - PADDLE_WIDTH) / 2);
+        addMouseListeners();
     }
 
-    private void setup_bricks() {
+    public void mouseMoved(MouseEvent e) {
+        remove(paddle);
+        drawPaddle(e.getX() - PADDLE_WIDTH / 2);
+    }
+
+    private void setupBricks() {
         double y = BRICK_Y_OFFSET;
         for (int i = 0; i < NBRICK_ROWS; i++) {
-            draw_row(y, row_color(i));
+            drawRow(y, rowColor(i));
             y += BRICK_HEIGHT + BRICK_SEP;
         }
     }
 
-    private void draw_row(double y, Color color) {
+    private void drawRow(double y, Color color) {
         double x = BRICK_X_OFFSET;
         for (int i = 0; i < NBRICKS_PER_ROW; i++) {
-            draw_brick(x, y, color);
+            drawBrick(x, y, color);
             x += BRICK_WIDTH + BRICK_SEP;
         }
     }
 
-    private void draw_brick(double x, double y, Color color) {
-        GRect rect = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
-        rect.setFilled(true);
-        rect.setFillColor(color);
-        rect.setColor(color);
-        add(rect);
+    private void drawBrick(double x, double y, Color color) {
+        GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+        brick.setFilled(true);
+        brick.setFillColor(color);
+        brick.setColor(color);
+        add(brick);
     }
 
-    private Color row_color(int n) {
+    private void drawPaddle(double x) {
+        double y = HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT);
+        paddle = new GRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
+        paddle.setFilled(true);
+        paddle.setFillColor(Color.BLACK);
+        paddle.setColor(Color.BLACK);
+        add(paddle);
+    }
+
+    private Color rowColor(int n) {
         switch (n) {
             case 0: return Color.RED;
             case 1: return Color.RED;
