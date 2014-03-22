@@ -67,7 +67,10 @@ public class Breakout extends GraphicsProgram {
 
     public void mouseMoved(MouseEvent e) {
         remove(paddle);
-        drawPaddle(e.getX() - PADDLE_WIDTH / 2);
+        double x = e.getX() - PADDLE_WIDTH / 2;
+        if (x < 0) x = 0;
+        if (x > (WIDTH - PADDLE_WIDTH)) x = WIDTH - PADDLE_WIDTH;
+        drawPaddle(x);
     }
 
     private void setupBricks() {
