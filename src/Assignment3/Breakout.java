@@ -1,5 +1,3 @@
-package Assignment3;
-
 /*
  * File: Breakout.java
  * -------------------
@@ -56,6 +54,46 @@ public class Breakout extends GraphicsProgram {
     private static final int NTURNS = 3;
 
     public void run() {
-        /* You fill this in, along with any subsidiary methods */
+        setup_bricks();
+    }
+
+    private void setup_bricks() {
+        double y = BRICK_Y_OFFSET;
+        for (int i = 0; i < NBRICK_ROWS; i++) {
+            draw_row(y, row_color(i));
+            y += BRICK_HEIGHT + BRICK_SEP;
+        }
+    }
+
+    private void draw_row(double y, Color color) {
+        double x = BRICK_SEP / 2;
+        for (int i = 0; i < NBRICKS_PER_ROW; i++) {
+            draw_brick(x, y, color);
+            x += BRICK_WIDTH + BRICK_SEP;
+        }
+    }
+
+    private void draw_brick(double x, double y, Color color) {
+        GRect rect = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+        rect.setFilled(true);
+        rect.setFillColor(color);
+        rect.setColor(color);
+        add(rect);
+    }
+
+    private Color row_color(int n) {
+        switch (n) {
+            case 0: return Color.RED;
+            case 1: return Color.RED;
+            case 2: return Color.ORANGE;
+            case 3: return Color.ORANGE;
+            case 4: return Color.YELLOW;
+            case 5: return Color.YELLOW;
+            case 6: return Color.GREEN;
+            case 7: return Color.GREEN;
+            case 8: return Color.CYAN;
+            case 9: return Color.CYAN;
+            default: return Color.BLACK;
+        }
     }
 }
