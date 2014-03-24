@@ -61,6 +61,8 @@ public class Breakout extends GraphicsProgram {
     private GOval ball;
     private double vx;
     private double vy = 3.0;
+    private int remainingBricks = NBRICK_ROWS * NBRICKS_PER_ROW;
+    private int remainingTurns = NTURNS;
 
     public void run() {
         setupBricks();
@@ -69,10 +71,19 @@ public class Breakout extends GraphicsProgram {
         vx = rand.nextDouble(1.0, 3.0);
         if (rand.nextBoolean(0.5)) vx = -vx;
         addMouseListeners();
-        while (true) {
+        while (ball.getY() <= HEIGHT - ball.getHeight() && remainingBricks > 0) {
             moveBall();
             handleCollision();
             pause(15);
+        }
+        if (remainingBricks == 0) {
+            GLabel winner = new GLabel("You Won!", WIDTH / 2, HEIGHT / 2);
+            winner.move(winner.getWidth() / -2, 0);
+            add(winner);
+        } else {
+            GLabel loser = new GLabel("You Lost.", WIDTH / 2, HEIGHT / 2);
+            loser.move(loser.getWidth() / -2, 0);
+            add(loser);
         }
     }
 
@@ -130,7 +141,7 @@ public class Breakout extends GraphicsProgram {
 
     private void moveBall() {
         if (ball.getX() <= 0 || ball.getX() >= WIDTH - ball.getWidth()) vx *= -1;
-        if (ball.getY() <= 0 || ball.getY() >= HEIGHT - ball.getHeight()) vy *= -1;
+        if (ball.getY() <= 0) vy *= -1;
         ball.move(vx, vy);
     }
 
@@ -156,6 +167,7 @@ public class Breakout extends GraphicsProgram {
             vy *= -1;
         } else {
             vy *= -1;
+            remainingBricks -= 1;
             remove(collider);
         }
     }
