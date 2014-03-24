@@ -71,6 +71,7 @@ public class Breakout extends GraphicsProgram {
         addMouseListeners();
         while (true) {
             moveBall();
+            handleCollision();
             pause(15);
         }
     }
@@ -132,6 +133,33 @@ public class Breakout extends GraphicsProgram {
         if (ball.getY() <= 0 || ball.getY() >= HEIGHT - ball.getHeight()) vy *= -1;
         ball.move(vx, vy);
     }
+
+    private GObject getCollidingObject() {
+        double x = ball.getX();
+        double y = ball.getY();
+        double d = ball.getWidth();
+        if (getElementAt(x, y) != null) {
+            return getElementAt(x, y);
+        } else if (getElementAt(x + d, y) != null) {
+            return getElementAt(x + d, y);
+        } else if (getElementAt(x, y + d) != null) {
+            return getElementAt(x, y + d);
+        } else {
+            return getElementAt(x + d, y + d);
+        }
+    }
+
+    private void handleCollision() {
+        GObject collider = getCollidingObject();
+        if (collider == null) return;
+        if (collider == paddle) {
+            vy *= -1;
+        } else {
+            vy *= -1;
+            remove(collider);
+        }
+    }
+
 
     private Color rowColor(int n) {
         switch (n) {
