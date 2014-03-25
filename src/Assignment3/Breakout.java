@@ -76,15 +76,7 @@ public class Breakout extends GraphicsProgram {
             handleCollision();
             pause(15);
         }
-        if (remainingBricks == 0) {
-            GLabel winner = new GLabel("You Won!", WIDTH / 2, HEIGHT / 2);
-            winner.move(winner.getWidth() / -2, 0);
-            add(winner);
-        } else {
-            GLabel loser = new GLabel("You Lost.", WIDTH / 2, HEIGHT / 2);
-            loser.move(loser.getWidth() / -2, 0);
-            add(loser);
-        }
+        endOfGameMessage();
     }
 
     public void mouseMoved(MouseEvent e) {
@@ -172,7 +164,6 @@ public class Breakout extends GraphicsProgram {
         }
     }
 
-
     private Color rowColor(int n) {
         switch (n) {
             case 0: return Color.RED;
@@ -187,6 +178,13 @@ public class Breakout extends GraphicsProgram {
             case 9: return Color.CYAN;
             default: return Color.BLACK;
         }
+    }
+
+    private void endOfGameMessage() {
+        String exitMessageText = remainingBricks == 0 ? "You Won!" : "You Lost.";
+        GLabel exitMessage = new GLabel(exitMessageText, WIDTH / 2, HEIGHT / 2);
+        exitMessage.move(exitMessage.getWidth() / -2, 0);
+        add(exitMessage);
     }
 
     private RandomGenerator rand = RandomGenerator.getInstance();
