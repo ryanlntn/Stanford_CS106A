@@ -59,7 +59,8 @@ public class Breakout extends GraphicsProgram {
 
     private GRect paddle;
     private GOval ball;
-    private double vx;
+    private RandomGenerator rand = RandomGenerator.getInstance();
+    private double vx = rand.nextBoolean(0.5) ? rand.nextDouble(1.0, 3.0) : -rand.nextDouble(1.0, 3.0);
     private double vy = 3.0;
     private int remainingBricks = NBRICK_ROWS * NBRICKS_PER_ROW;
     private int remainingTurns = NTURNS;
@@ -68,8 +69,6 @@ public class Breakout extends GraphicsProgram {
         setupBricks();
         drawPaddle((WIDTH - PADDLE_WIDTH) / 2);
         drawBall();
-        vx = rand.nextDouble(1.0, 3.0);
-        if (rand.nextBoolean(0.5)) vx = -vx;
         addMouseListeners();
         while (ball.getY() <= HEIGHT - ball.getHeight() && remainingBricks > 0) {
             moveBall();
@@ -186,7 +185,5 @@ public class Breakout extends GraphicsProgram {
         exitMessage.move(exitMessage.getWidth() / -2, 0);
         add(exitMessage);
     }
-
-    private RandomGenerator rand = RandomGenerator.getInstance();
 
 }
