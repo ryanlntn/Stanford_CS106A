@@ -1,4 +1,5 @@
 import acm.graphics.GArc;
+import acm.graphics.GCompound;
 import acm.graphics.GLine;
 import acm.program.GraphicsProgram;
 
