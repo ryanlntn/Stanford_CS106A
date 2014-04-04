@@ -1,0 +1,32 @@
+import acm.graphics.GRect;
+import acm.program.GraphicsProgram;
+
+public class LincolnMemorial extends GraphicsProgram {
+
+    private static final int BUILDING_WIDTH = 600;
+    private static final int BUILDING_HEIGHT = 400;
+
+    public void run() {
+        drawFoundation();
+        drawRoof();
+    }
+
+    public void drawRoof() {
+        add(new GRect((getWidth() - BUILDING_WIDTH) / 2 + 50,
+                       50,
+                       BUILDING_WIDTH - 100,
+                       BUILDING_HEIGHT / 6));
+        add(new GRect((getWidth() - BUILDING_WIDTH) / 2,
+                      50 + BUILDING_HEIGHT / 6,
+                      BUILDING_WIDTH,
+                      BUILDING_HEIGHT / 6));
+    }
+
+    public void drawFoundation() {
+        add(new GRect((getWidth() - BUILDING_WIDTH) / 2,
+                      50 + (BUILDING_HEIGHT / 6) * 5,
+                      BUILDING_WIDTH,
+                      BUILDING_HEIGHT / 6));
+    }
+
+}
