@@ -45,9 +45,9 @@ public class LincolnMemorial extends GraphicsProgram {
         for (int i = 0; i < 24; i++) {
             if (i % 2 == 0) {
                 add(new GOval((getWidth() - BUILDING_WIDTH) / 2 + ((BUILDING_WIDTH / 24) * i),
-                               50 + BUILDING_HEIGHT / 6,
-                               BUILDING_WIDTH / 24,
-                               BUILDING_HEIGHT / 8));
+                               50 + BUILDING_HEIGHT / 6 + 30,
+                               20,
+                               20));
             }
         }
     }
