@@ -1,3 +1,4 @@
+import acm.graphics.GOval;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 
@@ -10,6 +11,7 @@ public class LincolnMemorial extends GraphicsProgram {
         drawFoundation();
         drawRoof();
         drawColumns();
+        drawCircles();
     }
 
     private void drawRoof() {
@@ -36,6 +38,17 @@ public class LincolnMemorial extends GraphicsProgram {
                     50 + (BUILDING_HEIGHT / 6) * 2,
                     BUILDING_WIDTH / 24,
                     (BUILDING_HEIGHT / 6) * 3));
+        }
+    }
+
+    private void drawCircles() {
+        for (int i = 0; i < 24; i++) {
+            if (i % 2 == 0) {
+                add(new GOval((getWidth() - BUILDING_WIDTH) / 2 + ((BUILDING_WIDTH / 24) * i),
+                               50 + BUILDING_HEIGHT / 6,
+                               BUILDING_WIDTH / 24,
+                               BUILDING_HEIGHT / 8));
+            }
         }
     }
 
