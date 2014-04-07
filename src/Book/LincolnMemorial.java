@@ -12,6 +12,7 @@ public class LincolnMemorial extends GraphicsProgram {
         drawRoof();
         drawColumns();
         drawCircles();
+        drawLincoln();
     }
 
     private void drawRoof() {
@@ -50,6 +51,17 @@ public class LincolnMemorial extends GraphicsProgram {
                                16));
             }
         }
+    }
+
+    private void drawLincoln() {
+        add(new GRect((getWidth() / 2) - ((BUILDING_WIDTH / 25) - 8) / 2,
+                      BUILDING_HEIGHT - 60,
+                      (BUILDING_WIDTH / 25) - 8,
+                      40));
+        add(new GOval((getWidth() / 2) - ((BUILDING_WIDTH / 25) - 8) / 2,
+                      BUILDING_HEIGHT - 76,
+                      16,
+                      16));
     }
 
 }
