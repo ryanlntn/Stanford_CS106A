@@ -33,21 +33,21 @@ public class LincolnMemorial extends GraphicsProgram {
     }
 
     private void drawColumns() {
-        for (int i = 0; i < 24; i++) {
-            add(new GRect((getWidth() - BUILDING_WIDTH) / 2 + ((BUILDING_WIDTH / 24) * i),
+        for (int i = 0; i < 25; i++) {
+            add(new GRect((getWidth() - BUILDING_WIDTH) / 2 + ((BUILDING_WIDTH / 25) * i),
                     50 + (BUILDING_HEIGHT / 6) * 2,
-                    BUILDING_WIDTH / 24,
+                    BUILDING_WIDTH / 25,
                     (BUILDING_HEIGHT / 6) * 3));
         }
     }
 
     private void drawCircles() {
-        for (int i = 0; i < 24; i++) {
+        for (int i = 0; i < 25; i++) {
             if (i % 2 == 0) {
-                add(new GOval((getWidth() - BUILDING_WIDTH) / 2 + ((BUILDING_WIDTH / 24) * i),
+                add(new GOval((getWidth() - BUILDING_WIDTH) / 2 + ((BUILDING_WIDTH / 25) * i) + 4,
                                50 + BUILDING_HEIGHT / 6 + 30,
-                               20,
-                               20));
+                               16,
+                               16));
             }
         }
     }
