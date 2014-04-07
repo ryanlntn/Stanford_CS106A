@@ -9,9 +9,10 @@ public class LincolnMemorial extends GraphicsProgram {
     public void run() {
         drawFoundation();
         drawRoof();
+        drawColumns();
     }
 
-    public void drawRoof() {
+    private void drawRoof() {
         add(new GRect((getWidth() - BUILDING_WIDTH) / 2 + 50,
                        50,
                        BUILDING_WIDTH - 100,
@@ -22,11 +23,20 @@ public class LincolnMemorial extends GraphicsProgram {
                       BUILDING_HEIGHT / 6));
     }
 
-    public void drawFoundation() {
+    private void drawFoundation() {
         add(new GRect((getWidth() - BUILDING_WIDTH) / 2,
                       50 + (BUILDING_HEIGHT / 6) * 5,
                       BUILDING_WIDTH,
                       BUILDING_HEIGHT / 6));
+    }
+
+    private void drawColumns() {
+        for (int i = 0; i < 24; i++) {
+            add(new GRect((getWidth() - BUILDING_WIDTH) / 2 + ((BUILDING_WIDTH / 24) * i),
+                    50 + (BUILDING_HEIGHT / 6) * 2,
+                    BUILDING_WIDTH / 24,
+                    (BUILDING_HEIGHT / 6) * 3));
+        }
     }
 
 }
