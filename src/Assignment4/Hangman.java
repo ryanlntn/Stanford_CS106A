@@ -18,14 +18,18 @@ public class Hangman extends ConsoleProgram {
     private int remainingGuesses = 8;
 
     public void run() {
-		/* You fill this in */
         lexicon = new HangmanLexicon();
         word = lexicon.getWord(0);
         println("Welcome to Hangman!");
-        println("The word now looks like this: " + obfuscatedWord());
-        println("You have " + remainingGuesses + " guesses left.");
-        String guess = readLine("Your guess: ").toUpperCase();
-        println(guess);
+        while (true) {
+            if (remainingGuesses == 0) break;
+            println("The word now looks like this: " + obfuscatedWord());
+            println("You have " + remainingGuesses + " guesses left.");
+            String guess = readLine("Your guess: ").toUpperCase();
+            println("Your guess: " + guess);
+            println("There are no " + guess + "'s in the word.");
+            remainingGuesses--;
+        }
 	}
 
     private String obfuscatedWord() {
