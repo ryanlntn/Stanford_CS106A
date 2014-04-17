@@ -16,10 +16,11 @@ public class Hangman extends ConsoleProgram {
     private HangmanLexicon lexicon;
     private String word;
     private int remainingGuesses = 8;
+    private RandomGenerator rand = RandomGenerator.getInstance();
 
     public void run() {
         lexicon = new HangmanLexicon();
-        word = lexicon.getWord(0);
+        word = lexicon.getWord(rand.nextInt(0, lexicon.getWordCount()));
         println("Welcome to Hangman!");
         while (true) {
             if (remainingGuesses == 0) break;
