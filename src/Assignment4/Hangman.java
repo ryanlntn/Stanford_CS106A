@@ -48,7 +48,7 @@ public class Hangman extends ConsoleProgram {
     }
 
     private boolean isWordGuessed() {
-        return actualWord.equals(guessedWord);
+        return this.actualWord.equals(guessedWord);
     }
 
     private void takeGuess(String guess) {
@@ -57,7 +57,7 @@ public class Hangman extends ConsoleProgram {
             if (actualWord.substring(i, i + 1).equals(guess)) {
                 newGuessedWord += guess;
             } else {
-                newGuessedWord += "-";
+                newGuessedWord += guessedWord.substring(i, i + 1);
             }
         }
         guessedWord = newGuessedWord;
