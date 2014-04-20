@@ -24,6 +24,7 @@ public class Hangman extends ConsoleProgram {
         actualWord = lexicon.getWord(rand.nextInt(0, lexicon.getWordCount() - 1));
         guessedWord = hideWord(actualWord);
         println("Welcome to Hangman!");
+
         while (true) {
             if (remainingGuesses == 0 || isWordGuessed()) break;
 
@@ -31,13 +32,28 @@ public class Hangman extends ConsoleProgram {
             println("You have " + remainingGuesses + " guesses left.");
 
             String guess = readLine("Your guess: ").toUpperCase();
-            println("Your guess: " + guess);
-            takeGuess(guess);
-            println("There are no " + guess + "'s in the word.");
 
-            remainingGuesses--;
+            if (hitsFor(guess) > 0) {
+                println("That guess is correct.");
+            } else {
+                println("There are no " + guess + "'s in the word.");
+                remainingGuesses--;
+            }
         }
+
+        closingMessage();
 	}
+
+    private void closingMessage() {
+        if (isWordGuessed()) {
+            println("You guessed the word: " + actualWord);
+            println("You win.");
+        } else {
+            println("You're completely hung.");
+            println("The word was: " + actualWord);
+            println("You lose.");
+        }
+    }
 
     private String hideWord(String originalWord) {
         String dashedWord = "";
@@ -51,16 +67,19 @@ public class Hangman extends ConsoleProgram {
         return this.actualWord.equals(guessedWord);
     }
 
-    private void takeGuess(String guess) {
+    private int hitsFor(String guess) {
         String newGuessedWord = "";
+        int hits = 0;
         for (int i = 0; i < actualWord.length(); i++) {
             if (actualWord.substring(i, i + 1).equals(guess)) {
                 newGuessedWord += guess;
+                hits += 1;
             } else {
                 newGuessedWord += guessedWord.substring(i, i + 1);
             }
         }
         guessedWord = newGuessedWord;
+        return hits;
     }
 
 
