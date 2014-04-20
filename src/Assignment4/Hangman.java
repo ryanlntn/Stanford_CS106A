@@ -31,7 +31,7 @@ public class Hangman extends ConsoleProgram {
             println("The word now looks like this: " + guessedWord);
             println("You have " + remainingGuesses + " guesses left.");
 
-            String guess = readLine("Your guess: ").toUpperCase();
+            String guess = readGuess();
 
             if (hitsFor(guess) > 0) {
                 println("That guess is correct.");
@@ -53,6 +53,15 @@ public class Hangman extends ConsoleProgram {
             println("The word was: " + actualWord);
             println("You lose.");
         }
+    }
+
+    private String readGuess() {
+        String guess = readLine("Your guess: ").toUpperCase();
+        while (guess.length() != 1) {
+            println("That guess is illegal. Please guess again.");
+            guess = readLine("Your guess: ").toUpperCase();
+        }
+        return guess;
     }
 
     private String hideWord(String originalWord) {
