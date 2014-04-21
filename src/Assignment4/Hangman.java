@@ -14,6 +14,7 @@ import java.awt.*;
 public class Hangman extends ConsoleProgram {
 
     private HangmanLexicon lexicon;
+    private HangmanCanvas canvas;
     private String actualWord;
     private String guessedWord;
     private int remainingGuesses = 8;
@@ -43,6 +44,11 @@ public class Hangman extends ConsoleProgram {
 
         closingMessage();
 	}
+
+    public void init() {
+        canvas = new HangmanCanvas();
+        add(canvas);
+    }
 
     private void closingMessage() {
         if (isWordGuessed()) {
