@@ -33,7 +33,19 @@ public class HangmanCanvas extends GCanvas {
         add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD));
         add(new GLine(x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD + LOWER_ARM_LENGTH));
 
-        
+        /* Left Leg */
+        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH));
+        add(new GLine(x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
+
+        /* Right Leg */
+        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH));
+        add(new GLine(x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
+
+        /* Left Foot */
+        add(new GLine(x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH, x - HIP_WIDTH - FOOT_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
+
+        /* Right Foot */
+        add(new GLine(x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH, x + HIP_WIDTH + FOOT_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
 	}
 
 /**
