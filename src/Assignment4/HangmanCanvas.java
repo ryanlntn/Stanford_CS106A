@@ -13,11 +13,15 @@ public class HangmanCanvas extends GCanvas {
 
         removeAll();
 
-        int x = 3 * getWidth() / 4;
+        int x = getWidth() * 3 / 4;
         int y = getHeight() / 4;
 		add(new GLine(x, y, x, y + ROPE_LENGTH));
         add(new GLine(x, y, x - BEAM_LENGTH, y));
         add(new GLine(x - BEAM_LENGTH, y, x - BEAM_LENGTH, y + SCAFFOLD_HEIGHT));
+
+        /* Head */
+        add(new GOval(x - 25, y, 50, 50));
+
 	}
 
 /**
