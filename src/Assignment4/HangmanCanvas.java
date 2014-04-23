@@ -20,8 +20,20 @@ public class HangmanCanvas extends GCanvas {
         add(new GLine(x - BEAM_LENGTH, y, x - BEAM_LENGTH, y + SCAFFOLD_HEIGHT));
 
         /* Head */
-        add(new GOval(x - 25, y + ROPE_LENGTH, 50, 50));
+        add(new GOval(x - HEAD_RADIUS, y + ROPE_LENGTH, HEAD_RADIUS * 2, HEAD_RADIUS * 2));
 
+        /* Body */
+        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2), x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH));
+
+        /* Left Arm */
+        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x - UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD));
+        add(new GLine(x - UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x - UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD + LOWER_ARM_LENGTH));
+
+        /* Right Arm */
+        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD));
+        add(new GLine(x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD + LOWER_ARM_LENGTH));
+
+        
 	}
 
 /**
