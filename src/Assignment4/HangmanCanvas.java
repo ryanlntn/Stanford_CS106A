@@ -44,6 +44,27 @@ public class HangmanCanvas extends GCanvas {
 	public void noteIncorrectGuess(String letter) {
         String str = incorrectLabel.getLabel() + letter;
 		incorrectLabel.setLabel(str);
+
+        switch (str.length()) {
+            case 1:  drawHead();
+                break;
+            case 2:  drawBody();
+                break;
+            case 3:  drawArm("left");
+                break;
+            case 4:  drawArm("right");
+                break;
+            case 5:  drawLeg("left");
+                break;
+            case 6:  drawLeg("right");
+                break;
+            case 7:  drawFoot("left");
+                break;
+            case 8:  drawFoot("right");
+                break;
+            default:
+                break;
+        }
 	}
 
     private void drawHead() {
