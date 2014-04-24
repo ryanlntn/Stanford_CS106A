@@ -27,6 +27,8 @@ public class Hangman extends ConsoleProgram {
         println("Welcome to Hangman!");
 
         while (true) {
+            canvas.displayWord(guessedWord);
+
             if (remainingGuesses == 0 || isWordGuessed()) break;
 
             println("The word now looks like this: " + guessedWord);
@@ -38,6 +40,7 @@ public class Hangman extends ConsoleProgram {
                 println("That guess is correct.");
             } else {
                 println("There are no " + guess + "'s in the word.");
+                canvas.noteIncorrectGuess(guess);
                 remainingGuesses--;
             }
         }

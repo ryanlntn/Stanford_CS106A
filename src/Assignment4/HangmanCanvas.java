@@ -8,6 +8,9 @@ import acm.graphics.*;
 
 public class HangmanCanvas extends GCanvas {
 
+    private GLabel wordLabel;
+    private GLabel incorrectLabel;
+
     /** Resets the display so that only the scaffold appears */
 	public void reset() {
         removeAll();
@@ -15,6 +18,12 @@ public class HangmanCanvas extends GCanvas {
         add(new GLine(ORIGIN_X, ORIGIN_Y, ORIGIN_X, ORIGIN_Y + ROPE_LENGTH));
         add(new GLine(ORIGIN_X, ORIGIN_Y, ORIGIN_X - BEAM_LENGTH, ORIGIN_Y));
         add(new GLine(ORIGIN_X - BEAM_LENGTH, ORIGIN_Y, ORIGIN_X - BEAM_LENGTH, ORIGIN_Y + SCAFFOLD_HEIGHT));
+
+        wordLabel = new GLabel("", ORIGIN_X - BEAM_LENGTH - 25, ORIGIN_Y + SCAFFOLD_HEIGHT + 30);
+        add(wordLabel);
+
+        incorrectLabel = new GLabel("", ORIGIN_X - BEAM_LENGTH - 25, ORIGIN_Y + SCAFFOLD_HEIGHT + 50);
+        add(incorrectLabel);
 	}
 
     /**
@@ -23,7 +32,7 @@ public class HangmanCanvas extends GCanvas {
      * been guessed so far; unguessed letters are indicated by hyphens.
      */
 	public void displayWord(String word) {
-		/* You fill this in */
+        wordLabel.setLabel(word);
 	}
 
     /**
@@ -32,8 +41,9 @@ public class HangmanCanvas extends GCanvas {
      * on the scaffold and adds the letter to the list of incorrect
      * guesses that appears at the bottom of the window.
      */
-	public void noteIncorrectGuess(char letter) {
-		/* You fill this in */
+	public void noteIncorrectGuess(String letter) {
+        String str = incorrectLabel.getLabel() + letter;
+		incorrectLabel.setLabel(str);
 	}
 
     private void drawHead() {
