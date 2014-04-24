@@ -8,66 +8,110 @@ import acm.graphics.*;
 
 public class HangmanCanvas extends GCanvas {
 
-/** Resets the display so that only the scaffold appears */
+    /** Resets the display so that only the scaffold appears */
 	public void reset() {
 
         removeAll();
 
-        int x = 200;
-        int y = 50;
+        int x = ORIGIN_X;
+        int y = ORIGIN_Y;
 		add(new GLine(x, y, x, y + ROPE_LENGTH));
         add(new GLine(x, y, x - BEAM_LENGTH, y));
         add(new GLine(x - BEAM_LENGTH, y, x - BEAM_LENGTH, y + SCAFFOLD_HEIGHT));
 
-        /* Head */
-        add(new GOval(x - HEAD_RADIUS, y + ROPE_LENGTH, HEAD_RADIUS * 2, HEAD_RADIUS * 2));
-
-        /* Body */
-        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2), x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH));
-
-        /* Left Arm */
-        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x - UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD));
-        add(new GLine(x - UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x - UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD + LOWER_ARM_LENGTH));
-
-        /* Right Arm */
-        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD));
-        add(new GLine(x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD, x + UPPER_ARM_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD + LOWER_ARM_LENGTH));
-
-        /* Left Leg */
-        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH));
-        add(new GLine(x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
-
-        /* Right Leg */
-        add(new GLine(x, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH));
-        add(new GLine(x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH, x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
-
-        /* Left Foot */
-        add(new GLine(x - HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH, x - HIP_WIDTH - FOOT_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
-
-        /* Right Foot */
-        add(new GLine(x + HIP_WIDTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH, x + HIP_WIDTH + FOOT_LENGTH, y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH));
+        drawHead();
+        drawBody();
+        drawArm("left");
+        drawArm("right");
+        drawLeg("left");
+        drawLeg("right");
+        drawFoot("left");
+        drawFoot("right");
 	}
 
-/**
- * Updates the word on the screen to correspond to the current
- * state of the game.  The argument string shows what letters have
- * been guessed so far; unguessed letters are indicated by hyphens.
- */
+    /**
+     * Updates the word on the screen to correspond to the current
+     * state of the game.  The argument string shows what letters have
+     * been guessed so far; unguessed letters are indicated by hyphens.
+     */
 	public void displayWord(String word) {
 		/* You fill this in */
 	}
 
-/**
- * Updates the display to correspond to an incorrect guess by the
- * user.  Calling this method causes the next body part to appear
- * on the scaffold and adds the letter to the list of incorrect
- * guesses that appears at the bottom of the window.
- */
+    /**
+     * Updates the display to correspond to an incorrect guess by the
+     * user.  Calling this method causes the next body part to appear
+     * on the scaffold and adds the letter to the list of incorrect
+     * guesses that appears at the bottom of the window.
+     */
 	public void noteIncorrectGuess(char letter) {
 		/* You fill this in */
 	}
 
-/* Constants for the simple version of the picture (in pixels) */
+    private void drawHead() {
+        add(new GOval(ORIGIN_X - HEAD_RADIUS,
+                      ORIGIN_Y + ROPE_LENGTH,
+                      HEAD_RADIUS * 2,
+                      HEAD_RADIUS * 2));
+    }
+
+    private void drawBody() {
+        int offsetY = ORIGIN_Y + ROPE_LENGTH + (HEAD_RADIUS * 2);
+        add(new GLine(ORIGIN_X,
+                      offsetY,
+                      ORIGIN_X,
+                      offsetY + BODY_LENGTH));
+    }
+
+    private void drawArm(String side) {
+        int offsetY = ORIGIN_Y + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD;
+
+        if (side.toLowerCase() == "left") {
+            add(new GLine(ORIGIN_X, offsetY, ORIGIN_X - UPPER_ARM_LENGTH, offsetY));
+            add(new GLine(ORIGIN_X - UPPER_ARM_LENGTH,
+                          offsetY,
+                          ORIGIN_X - UPPER_ARM_LENGTH,
+                          offsetY + LOWER_ARM_LENGTH));
+        } else {
+            add(new GLine(ORIGIN_X, offsetY, ORIGIN_X + UPPER_ARM_LENGTH, offsetY));
+            add(new GLine(ORIGIN_X + UPPER_ARM_LENGTH,
+                          offsetY,
+                          ORIGIN_X + UPPER_ARM_LENGTH,
+                          offsetY + LOWER_ARM_LENGTH));
+        }
+    }
+
+    private void drawLeg(String side) {
+        int offsetY = ORIGIN_Y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH;
+
+        if (side.toLowerCase() == "left") {
+            add(new GLine(ORIGIN_X, offsetY, ORIGIN_X - HIP_WIDTH, offsetY));
+            add(new GLine(ORIGIN_X - HIP_WIDTH,
+                    offsetY,
+                    ORIGIN_X - HIP_WIDTH,
+                    offsetY + LEG_LENGTH));
+        } else {
+            add(new GLine(ORIGIN_X, offsetY, ORIGIN_X + HIP_WIDTH, offsetY));
+            add(new GLine(ORIGIN_X + HIP_WIDTH,
+                    offsetY,
+                    ORIGIN_X + HIP_WIDTH,
+                    offsetY + LEG_LENGTH));
+        }
+    }
+
+    private void drawFoot(String side) {
+        int offsetY = ORIGIN_Y + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH;
+
+        if (side.toLowerCase() == "left") {
+            add(new GLine(ORIGIN_X - HIP_WIDTH, offsetY, ORIGIN_X - HIP_WIDTH - FOOT_LENGTH, offsetY));
+        } else {
+            add(new GLine(ORIGIN_X + HIP_WIDTH, offsetY, ORIGIN_X + HIP_WIDTH + FOOT_LENGTH, offsetY));
+        }
+    }
+
+    /* Constants for the simple version of the picture (in pixels) */
+    private static final int ORIGIN_X = 200;
+    private static final int ORIGIN_Y = 50;
 	private static final int SCAFFOLD_HEIGHT = 360;
 	private static final int BEAM_LENGTH = 144;
 	private static final int ROPE_LENGTH = 18;
