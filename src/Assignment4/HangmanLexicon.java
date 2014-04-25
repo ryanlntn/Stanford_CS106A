@@ -13,16 +13,7 @@ public class HangmanLexicon {
     private List<String> words;
 
     public HangmanLexicon() {
-        File file = new File("ShorterLexicon.txt");
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        words = new ArrayList<String>();
-
-        String word = reader.readLine();
-
-        while (word != null) {
-            words.add(word);
-            word = reader.readLine();
-        }
+        readLexiconFile();
     }
 
     /** Returns the number of words in the lexicon. */
@@ -34,5 +25,19 @@ public class HangmanLexicon {
 	public String getWord(int index) {
 		return words.get(index);
 	}
+
+    private void readLexiconFile() {
+        File file = new File("/Users/ryanlntn/code/java/Stanford_CS106A/src/Assignment4/ShorterLexicon.txt");
+        FileReader fileReader = new FileReader(file);
+        BufferedReader reader = new BufferedReader(fileReader);
+        words = new ArrayList<String>();
+
+        String word = reader.readLine();
+
+        while (word != null) {
+            words.add(word);
+            word = reader.readLine();
+        }
+    }
 
 }
