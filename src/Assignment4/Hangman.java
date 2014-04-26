@@ -8,8 +8,6 @@
 import acm.program.*;
 import acm.util.*;
 
-import java.io.File;
-
 public class Hangman extends ConsoleProgram {
 
     private HangmanLexicon lexicon;

@@ -15,7 +15,7 @@ public class HangmanLexicon {
 
     public HangmanLexicon() {
         try {
-            BufferedReader hangmanWords = new BufferedReader(new FileReader("HangmanLexicon.txt"));
+            BufferedReader hangmanWords = new BufferedReader(new FileReader("/Users/ryanlntn/code/java/Stanford_CS106A/src/Assignment4/HangmanLexicon.txt"));
             while(true) {
                 String line = hangmanWords.readLine();
                 if(line == null) break;
@@ -28,13 +28,13 @@ public class HangmanLexicon {
     }
 
     /** Returns the number of words in the lexicon. */
-	public int getWordCount() {
-		return words.size();
-	}
+    public int getWordCount() {
+        return words.size();
+    }
 
     /** Returns the word at the specified index. */
-	public String getWord(int index) {
-		return words.get(index);
-	}
+    public String getWord(int index) {
+        return words.get(index);
+    }
 
 }
