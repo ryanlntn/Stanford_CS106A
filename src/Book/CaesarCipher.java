@@ -18,6 +18,7 @@ public class CaesarCipher extends ConsoleProgram {
     private String encodeString(String message, int shift) {
         String encodedMessage = "";
         for (int i = 0; i < message.length(); i++) {
+            // This should work but for some reason I keep getting ` when I shift a -1
             encodedMessage += (char)((message.charAt(i) + shift - (int)'a') % 26 + (int)'a');
         }
         return encodedMessage;
