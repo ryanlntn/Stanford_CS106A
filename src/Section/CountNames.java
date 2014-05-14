@@ -10,15 +10,23 @@ public class CountNames extends ConsoleProgram {
         while (true) {
             String name = readLine("Enter name: ");
             if (name.equals("")) break;
-            Integer count = nameCounts.get(name);
-            if (count != null) {
-                nameCounts.put(name, count + 1);
-            } else {
-                nameCounts.put(name, 1);
-            }
+            countName(name);
         }
+        displayNameCounts();
+    }
+
+    private void displayNameCounts() {
         for (Map.Entry<String, Integer> entry : nameCounts.entrySet()) {
             println("Entry [" + entry.getKey() + "] has count " + entry.getValue());
+        }
+    }
+
+    private void countName(String name) {
+        Integer count = nameCounts.get(name);
+        if (count != null) {
+            nameCounts.put(name, count + 1);
+        } else {
+            nameCounts.put(name, 1);
         }
     }
 
