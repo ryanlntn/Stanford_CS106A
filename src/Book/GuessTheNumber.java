@@ -15,10 +15,10 @@ public class GuessTheNumber extends ConsoleProgram {
             String lessThan = readLine("Is it less than " + guess +"? ");
             if (lessThan.equals("yes")) {
                 upperBound = guess;
-                guess = (lowerBound + guess) / 2;
+                guess -= (lowerBound + guess) / 2;
             } else if (lessThan.equals("no")) {
                 lowerBound = guess;
-                guess = (upperBound - guess) / 2;
+                guess += (upperBound - guess) / 2;
             } else {
                 println("hmmm...");
             }
