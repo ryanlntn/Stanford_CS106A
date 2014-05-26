@@ -9,9 +9,9 @@
  * and "ERIC" are the same names.
  */
 
-import acm.util.*;
 import java.io.*;
 import java.util.*;
+import acm.util.*;
 
 public class NameSurferDataBase implements NameSurferConstants {
 
@@ -41,7 +41,7 @@ public class NameSurferDataBase implements NameSurferConstants {
      * method returns null.
      */
     public NameSurferEntry findEntry(String name) {
-        return new NameSurferEntry(nameData.get(name));
+        return new NameSurferEntry(nameData.get(name).toString());
     }
 
     private Map nameData = new HashMap();
