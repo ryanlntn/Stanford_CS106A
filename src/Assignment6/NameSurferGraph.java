@@ -48,6 +48,7 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
         removeAll();
         drawBackgroundGrid();
         drawMargins();
+        drawDecadeLabels();
     }
 
     private void drawBackgroundGrid() {
@@ -62,6 +63,18 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
     private void drawMargins() {
         add(new GLine(0, GRAPH_MARGIN_SIZE, getWidth(), GRAPH_MARGIN_SIZE));
         add(new GLine(0, getHeight() - GRAPH_MARGIN_SIZE, getWidth(), getHeight() - GRAPH_MARGIN_SIZE));
+    }
+
+    private void drawDecadeLabels() {
+        int columnWidth = getWidth() / NDECADES;
+        int x = 6;
+        int y = getHeight() - 4;
+        int decade = START_DECADE;
+        for (int i = 0; i < NDECADES; i++) {
+            add(new GLabel(Integer.toString(decade), x, y));
+            x += columnWidth;
+            decade += 10;
+        }
     }
 
     /* Implementation of the ComponentListener interface */
