@@ -11,26 +11,35 @@ import javax.swing.*;
 
 public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 
-/* Method: init() */
-/**
- * This method has the responsibility for reading in the data base
- * and initializing the interactors at the bottom of the window.
- */
-	public void init() {
-	    // You fill this in, along with any helper methods //
-      add(new JLabel("Name"), SOUTH);
-      add(new JTextField(30), SOUTH);
-      add(new JButton("Graph"), SOUTH);
-      add(new JButton("Clear"), SOUTH);
-	}
+    /* Method: init() */
+    /**
+     * This method has the responsibility for reading in the data base
+     * and initializing the interactors at the bottom of the window.
+     */
+    public void init() {
+        add(new JLabel("Name"), SOUTH);
+        nameField = new JTextField(30);
+        add(nameField, SOUTH);
+        add(new JButton("Graph"), SOUTH);
+        add(new JButton("Clear"), SOUTH);
+    }
 
-/* Method: actionPerformed(e) */
-/**
- * This class is responsible for detecting when the buttons are
- * clicked, so you will have to define a method to respond to
- * button actions.
- */
-	public void actionPerformed(ActionEvent e) {
-		// You fill this in //
-	}
+    /* Method: actionPerformed(e) */
+    /**
+     * This class is responsible for detecting when the buttons are
+     * clicked, so you will have to define a method to respond to
+     * button actions.
+     */
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("Graph")) {
+            println(nameField.getText());
+        } else if (e.getActionCommand().equals("Clear")) {
+            removeAll();
+        } else if (e.getSource() == nameField) {
+            println(nameField.getText());
+        }
+
+    }
+
+    private JTextField nameField;
 }
