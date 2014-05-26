@@ -69,6 +69,8 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
                                           x + columnWidth, plotRank(entry.getRank(decade + 1)));
             lineSegment.setColor(Color.BLACK);
             add(lineSegment);
+            String labelText = entry.getName() + " " + (entry.getRank(decade) > 0 ? entry.getRank(decade) : "*");
+            add(new GLabel(labelText, x + 6, plotRank(entry.getRank(decade)) - 4));
             x += columnWidth;
             decade++;
         }
