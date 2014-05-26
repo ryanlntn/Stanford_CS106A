@@ -56,21 +56,23 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
 
     private void drawEntries() {
         for (int i = 0; i < entries.size(); i++) {
-            drawEntry(entries.get(i));
+            drawEntry(entries.get(i), colors[i % colors.length]);
         }
     }
 
-    private void drawEntry(NameSurferEntry entry) {
+    private void drawEntry(NameSurferEntry entry, Color color) {
         int columnWidth = getWidth() / NDECADES;
         int x = 0;
         int decade = 0;
         while (x < getWidth() && decade < (NDECADES - 1)) {
             GLine lineSegment = new GLine(x, plotRank(entry.getRank(decade)),
                                           x + columnWidth, plotRank(entry.getRank(decade + 1)));
-            lineSegment.setColor(Color.BLACK);
+            lineSegment.setColor(color);
             add(lineSegment);
             String labelText = entry.getName() + " " + (entry.getRank(decade) > 0 ? entry.getRank(decade) : "*");
-            add(new GLabel(labelText, x + 6, plotRank(entry.getRank(decade)) - 4));
+            GLabel label = new GLabel(labelText, x + 6, plotRank(entry.getRank(decade)) - 4);
+            label.setColor(color);
+            add(label);
             x += columnWidth;
             decade++;
         }
@@ -111,6 +113,7 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
     }
 
     private ArrayList<NameSurferEntry> entries = new ArrayList<NameSurferEntry>();
+    private Color[] colors = { Color.BLACK, Color.RED, Color.BLUE, Color.MAGENTA };
 
     /* Implementation of the ComponentListener interface */
     public void componentHidden(ComponentEvent e) { }
