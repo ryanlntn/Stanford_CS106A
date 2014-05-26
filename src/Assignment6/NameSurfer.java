@@ -24,6 +24,7 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
         add(new JButton("Clear"), SOUTH);
         nameField.addActionListener(this);
         addActionListeners();
+
     }
 
     /* Method: actionPerformed(e) */
@@ -34,15 +35,15 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Graph")) {
-            println(new NameSurferEntry("Sam 58 69 99 131 168 236 278 380 467 408 466").toString());
-            // println("Graph: " + nameField.getText());
+            println("Graph: " + nameData.findEntry(nameField.getText()));
         } else if (e.getActionCommand().equals("Clear")) {
             println("Clear");
-//            removeAll();
+            // removeAll();
         } else if (e.getSource() == nameField) {
             println("Graph: " + nameField.getText());
         }
     }
 
-    private JTextField nameField    ;
+    private JTextField nameField;
+    private NameSurferDataBase nameData = new NameSurferDataBase(NAMES_DATA_FILE);
 }

@@ -60,6 +60,6 @@ public class NameSurferEntry implements NameSurferConstants {
     }
 
     private String name;
-    private int[] ranks = new int[11];
+    private int[] ranks = new int[NDECADES];
 }
 
