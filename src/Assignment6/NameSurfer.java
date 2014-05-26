@@ -34,7 +34,8 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Graph")) {
-            println("Graph: " + nameField.getText());
+            println(new NameSurferEntry("Sam 58 69 99 131 168 236 278 380 467 408 466").getName());
+            // println("Graph: " + nameField.getText());
         } else if (e.getActionCommand().equals("Clear")) {
             println("Clear");
 //            removeAll();
@@ -43,5 +44,5 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
         }
     }
 
-    private JTextField nameField;
+    private JTextField nameField    ;
 }
