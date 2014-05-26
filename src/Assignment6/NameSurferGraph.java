@@ -24,7 +24,8 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
     * Clears the list of name surfer entries stored inside this class.
     */
     public void clear() {
-      //   You fill this in //
+        entries.clear();
+        update();
     }
 
     /* Method: addEntry(entry) */
@@ -34,7 +35,8 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
     * simply stores the entry; the graph is drawn by calling update.
     */
     public void addEntry(NameSurferEntry entry) {
-      // You fill this in //
+        entries.add(entry);
+        update();
     }
 
     /**
@@ -49,6 +51,35 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
         drawBackgroundGrid();
         drawMargins();
         drawDecadeLabels();
+        drawEntries();
+    }
+
+    private void drawEntries() {
+        for (int i = 0; i < entries.size(); i++) {
+            drawEntry(entries.get(i));
+        }
+    }
+
+    private void drawEntry(NameSurferEntry entry) {
+        int columnWidth = getWidth() / NDECADES;
+        int x = 0;
+        int decade = 0;
+        while (x < getWidth() && decade < (NDECADES - 1)) {
+            GLine lineSegment = new GLine(x, plotRank(entry.getRank(decade)),
+                                          x + columnWidth, plotRank(entry.getRank(decade + 1)));
+            lineSegment.setColor(Color.BLACK);
+            add(lineSegment);
+            x += columnWidth;
+            decade++;
+        }
+    }
+
+    private int plotRank(int rank) {
+        if (rank == 0) {
+            return getHeight() - GRAPH_MARGIN_SIZE;
+        } else {
+            return (int) (rank * ((getHeight() - (2 * GRAPH_MARGIN_SIZE)) / (double) MAX_RANK)) + GRAPH_MARGIN_SIZE;
+        }
     }
 
     private void drawBackgroundGrid() {
@@ -76,6 +107,8 @@ public class NameSurferGraph extends GCanvas implements NameSurferConstants, Com
             decade += 10;
         }
     }
+
+    private ArrayList<NameSurferEntry> entries = new ArrayList<NameSurferEntry>();
 
     /* Implementation of the ComponentListener interface */
     public void componentHidden(ComponentEvent e) { }
